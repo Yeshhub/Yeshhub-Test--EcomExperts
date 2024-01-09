@@ -25,23 +25,25 @@
             >
                 <fieldset class="js product-form__input">
                     <legend class="form__label">{{ option.name }}</legend>
-                    <input
-                        type="radio"
-                        id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                        name="{{ option.name }}"
-                        value="{{ value | escape }}"
-                        form="{{ product_form_id }}"
-                        {% if option.selected_value == value %}
-                            checked
-                        {% endif %}
-                        {% if option_disabled %}
-                            class="disabled"
-                        {% endif %}
-                    >
-                    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                    {{ value -}}
-                    <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
-                    </label>
+                    {%- for value in option.values -%}
+                        <input
+                            type="radio"
+                            id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                            name="{{ option.name }}"
+                            value="{{ value | escape }}"
+                            form="{{ product_form_id }}"
+                            {% if option.selected_value == value %}
+                                checked
+                            {% endif %}
+                            {% if option_disabled %}
+                                class="disabled"
+                            {% endif %}
+                        >
+                        <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                        {{ value -}}
+                        <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+                        </label>
+                    {% endfor %}
                 </fieldset>
                 <script type="application/json">
                 {{ product.variants | json }}
@@ -69,7 +71,20 @@
                         name="options[{{ option.name | escape }}]"
                         form="{{ product_form_id }}"
                     >
-                        {% render 'product-variant-options', product: product, option: option, block: block %}
+                        {%- for value in option.values -%}
+                            <option
+                                value="{{ value | escape }}"
+                                {% if option.selected_value == value %}
+                                    selected="selected"
+                                {% endif %}
+                                >
+                                {% if option_disabled -%}
+                                    {{- 'products.product.value_unavailable' | t: option_value: value -}}
+                                {%- else -%}
+                                    {{- value -}}
+                                {%- endif %}
+                            </option>
+                        {% endform %}
                     </select>
                     {% render 'icon-caret' %}
                     </div>
