@@ -43,7 +43,7 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
-        <div class="product-form__input product-form__input--dropdown">
+        <div class="product-form__input product-form__input--dropdown {{ option.name | escape }}">
           <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
             {{ option.name }}
           </label>
