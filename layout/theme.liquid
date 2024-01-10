@@ -273,13 +273,14 @@
         onload="this.media='all'"
       >
     {%- endif -%}
-
+    {{ 'custom.css' | asset_url | preload_tag: as: 'style' }}
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
