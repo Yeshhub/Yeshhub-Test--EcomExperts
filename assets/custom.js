@@ -58,22 +58,22 @@ function add_free_product() {
             };
 
             fetch('/cart/add.js', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                })
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(data) {
-                    console.log('success', data);
-                    location.reload();
-                })
-                .catch(function(error) {
-                    console.error('Error:', error);
-                });
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log('success', data);
+                location.reload();
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
         }
     } else {
         // Check if '44954670891258' is in the array
@@ -90,9 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Run the function on the cart page
         add_free_product();
     }
-    document.querySelector('.cart-items .cart-item cart-remove-button').addEventListener('click', function() {
+    document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
         setTimeout(function(){
             add_free_product();
-        }, 1000);
+            console.log('click');
+        }, 1500);
     });
 });
