@@ -39,7 +39,7 @@ if (!dropdown) {
   }
 }
 // making array for all the product added to cart.
-function addfreeproduct() {
+function add_free_product() {
     var ids = [];
 
     var cartItems = document.querySelectorAll('.cart-items .cart-item');
@@ -85,3 +85,9 @@ function addfreeproduct() {
         }
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.href.indexOf('/cart') > -1) {
+        // Run the function on the cart page
+        add_free_product();
+    }
+});
