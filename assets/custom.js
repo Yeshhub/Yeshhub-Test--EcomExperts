@@ -78,7 +78,7 @@ function add_free_product() {
     } else {
         // Check if '44954670891258' is in the array
         if (ids.includes('44954670891258')) {
-            var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button ');
+            var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button');
             if (cartRemoveButton) {
                 cartRemoveButton.click();
             }
@@ -90,4 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Run the function on the cart page
         add_free_product();
     }
+    document.querySelector('.cart-items .cart-item .cart-remove-button').addEventListener('click', function() {
+        add_free_product();
+    });
 });
