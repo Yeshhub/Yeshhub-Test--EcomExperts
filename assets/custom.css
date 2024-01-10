@@ -21,3 +21,6 @@
 .product-form__input--dropdown .swatches + .select {
     display: none;
 }
+.cart-items .cart-item[data-id="44954670891258"] cart-remove-button{
+    pointer-events: none;
+}
