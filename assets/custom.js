@@ -91,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         add_free_product();
     }
     document.querySelector('.cart-items .cart-item cart-remove-button').addEventListener('click', function() {
-        add_free_product();
+        setTimeout(function(){
+            add_free_product();
+        }, 1000);
     });
 });
