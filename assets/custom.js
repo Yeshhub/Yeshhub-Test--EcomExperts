@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Run the function on the cart page
         add_free_product();
     }
-    document.querySelector('.cart-items .cart-item .cart-remove-button').addEventListener('click', function() {
+    document.querySelector('.cart-items .cart-item cart-remove-button').addEventListener('click', function() {
         add_free_product();
     });
 });
