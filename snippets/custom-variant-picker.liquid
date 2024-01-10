@@ -50,7 +50,9 @@
           {% if product.handle == 'handbag' and option.name == 'Color' %}
             <div class="swatches">
               {% for value in option.values %}
-                <span class="swatch" data-value="{{ value | escape }}" style="--swatch-color:{{ value | escape }}">{{ value | escape }}</span>
+                <div class="swatch {% if option.selected_value == value %}selected{% endif %}" data-value="{{ value | escape }}" style="--swatch-color:{{ value | escape }}">
+                  <span class="visually-hidden">{{ value | escape }}</span>
+                </div>
               {% endfor %}
             </div>
           {% endif %}
