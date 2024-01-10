@@ -26,15 +26,15 @@ swatchElements.forEach(function(swatch) {
     select.value = selectedColor;
 
     // Remove the 'selected' attribute from all options within 'select'
-    select.querySelectorAll('option').forEach(function(option) {
-      option.removeAttribute('selected');
-    });
+    // select.querySelectorAll('option').forEach(function(option) {
+    //   option.removeAttribute('selected');
+    // });
 
     // Add the 'selected' attribute to the option with the selected color value
-    var selectedOption = select.querySelector('option[value="' + selectedColor + '"]');
-    if (selectedOption) {
-      selectedOption.setAttribute('selected', 'selected');
-    }
+    // var selectedOption = select.querySelector('option[value="' + selectedColor + '"]');
+    // if (selectedOption) {
+    //   selectedOption.setAttribute('selected', 'selected');
+    // }
 
     // Add 'selected' class to the clicked 'swatch' element
     this.classList.add('selected');
