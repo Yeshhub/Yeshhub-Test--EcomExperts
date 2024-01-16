@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         add_free_product('cartadd');
     }
 });
-document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
+document.querySelector('.cart-items .cart-item cart-remove-button').addEventListener('click', function() {
     console.log('in');
     var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button');
     if (cartRemoveButton) {
