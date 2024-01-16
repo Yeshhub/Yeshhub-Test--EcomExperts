@@ -104,11 +104,20 @@ document.addEventListener('DOMContentLoaded', function() {
         add_free_product('cartadd');
     }
 });
-document.querySelector('.cart-items .cart-item cart-remove-button').addEventListener('click', function() {
-    console.log('in');
-    var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button');
-    if (cartRemoveButton) {
-        cartRemoveButton.click();
-    }
-    console.log('click');
+document.querySelectorAll('.cart-items .cart-item .cart-remove-button').forEach(function (button) {
+    button.addEventListener('click', function () {
+        console.log('in');
+
+        var cartItem = this.closest('.cart-item');
+        var cartItemId = cartItem.dataset.id;
+
+        // Assuming you want to find an element with the class 'cart-remove-button' inside the cart item
+        var cartRemoveButton = cartItem.querySelector('.cart-remove-button');
+
+        if (cartRemoveButton) {
+            cartRemoveButton.click();
+        }
+
+        console.log('click');
+    });
 });
