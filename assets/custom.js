@@ -103,11 +103,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Run the function on the cart page
         add_free_product('cartadd');
     }
-    document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
-        setTimeout(function(){
-            console.log('in');
-            add_free_product('cartremove');
-            console.log('click');
-        }, 1500);
-    });
+});
+document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
+    setTimeout(function(){
+        console.log('in');
+        add_free_product('cartremove');
+        console.log('click');
+    }, 1500);
 });
