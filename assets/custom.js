@@ -105,9 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
-    setTimeout(function(){
-        console.log('in');
-        add_free_product('cartremove');
-        console.log('click');
-    }, 1500);
+    console.log('in');
+    add_free_product('cartremove');
+    console.log('click');
 });
