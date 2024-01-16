@@ -39,7 +39,7 @@ if (!dropdown) {
   }
 }
 // making array for all the product added to cart.
-function add_free_product() {
+function add_free_product(cart) {
     var ids = [];
 
     var cartItems = document.querySelectorAll('.cart-items .cart-item');
@@ -48,35 +48,44 @@ function add_free_product() {
         var id = cartItem.getAttribute('data-id');
         ids.push(id);
     });
-
-    // Check if 'latherBag' is in the array
-    if (ids.includes('44974448410874')) {
-        if (!ids.includes('44954670891258')) {
-            var data = {
-                quantity: 1,
-                id: 44954670891258
-            };
-
-            fetch('/cart/add.js', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                console.log('success', data);
-                location.reload();
-            })
-            .catch(function(error) {
-                console.error('Error:', error);
-            });
+    if (cart == 'cartadd'){
+      // Check if 'latherBag' is in the array
+        if (ids.includes('44974448410874')) {
+            if (!ids.includes('44954670891258')) {
+                var data = {
+                    quantity: 1,
+                    id: 44954670891258
+                };
+    
+                fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    console.log('success', data);
+                    location.reload();
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                });
+            }
+        } else {
+            // Check if '44954670891258' is in the array
+            if (ids.includes('44954670891258')) {
+                var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button');
+                if (cartRemoveButton) {
+                    cartRemoveButton.click();
+                }
+            }
         }
-    } else {
-        // Check if '44954670891258' is in the array
+    }
+    if (cart == 'cartremove'){
         if (ids.includes('44954670891258')) {
             var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button');
             if (cartRemoveButton) {
@@ -84,15 +93,16 @@ function add_free_product() {
             }
         }
     }
+    
 }
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.href.indexOf('/cart') > -1) {
         // Run the function on the cart page
-        add_free_product();
+        add_free_product(cartadd);
     }
     document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
         setTimeout(function(){
-            add_free_product();
+            add_free_product(cartremove);
             console.log('click');
         }, 1500);
     });
