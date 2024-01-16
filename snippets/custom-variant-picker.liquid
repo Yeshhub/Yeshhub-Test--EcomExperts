@@ -32,6 +32,7 @@
             <legend class="form__label">{{ option.name }}</legend>
             {% render 'custom-product-variant-options', product: product, option: option, block: block %}
           </fieldset>
+          <legend class="form__label">{{ option.name }}</legend>
           <select id="{{ option.name }}" value="{{ option.selected_value }}">
             {% for value in option.values %}
               {% if forloop.first %}<option value="unselected">Unselected</option>{% endif %}
