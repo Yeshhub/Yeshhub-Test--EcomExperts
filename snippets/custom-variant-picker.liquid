@@ -35,7 +35,7 @@
           <select id="{{ option.name }}" value="{{ option.selected_value }}">
             {% for value in option.values %}
               {% if forloop.first %}<option value="unselected">Unselected</option>{% endif %}
-              <option value="{{ value | escape }}"></option>
+              <option value="{{ value | escape }}">{{ value | escape }}</option>
             {% endfor %}
           </select>
         {% endif %}
