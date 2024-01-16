@@ -1,20 +1,36 @@
-// Targeting element with id 'Size'
-document.getElementById('Size').addEventListener('change', function () {
-  // Get selected value
-    var selectedValue = this.value;
-    // console.log(selectedValue);
+document.addEventListener('DOMContentLoaded', function () {
+    applyStylesBasedOnSelection(); // Call the function on page load
 
-    var swatchInput = document.querySelector('.product-form__input.Size input[value="' + selectedValue + '"]');
-    var swatchId = swatchInput ? swatchInput.id : null;
-// Get label
-    if (swatchId) {
-        var swatchLabel = document.querySelector('.product-form__input.Size label[for="' + swatchId + '"]');
-        if (swatchLabel) {
-          // Trigger Click on label
-            swatchLabel.click();
+    document.getElementById('Size').addEventListener('change', function () {
+        applyStylesBasedOnSelection();
+        
+        // Your existing code for swatchInput and swatchLabel here
+        var selectedValue = this.value;
+        var swatchInput = document.querySelector('.product-form__input.Size input[value="' + selectedValue + '"]');
+        var swatchId = swatchInput ? swatchInput.id : null;
+
+        if (swatchId) {
+            var swatchLabel = document.querySelector('.product-form__input.Size label[for="' + swatchId + '"]');
+            if (swatchLabel) {
+                swatchLabel.click();
+            }
+        }
+    });
+
+    function applyStylesBasedOnSelection() {
+        var selectedValue = document.getElementById('Size').value;
+        var productButtons = document.querySelector('.product__info-container .product-form .product-form__buttons');
+
+        if (selectedValue === 'unselected' && productButtons) {
+            productButtons.style.opacity = '0.4';
+            productButtons.style.pointerEvents = 'none';
+        } else if (productButtons) {
+            productButtons.style.opacity = '';
+            productButtons.style.pointerEvents = '';
         }
     }
 });
+
 
 // making array for all the product added to cart.
 function add_free_product(cart) {
