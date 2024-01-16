@@ -74,6 +74,7 @@ function add_free_product(cart) {
                 .catch(function(error) {
                     console.error('Error:', error);
                 });
+              console.log('in4');
             }
         } else {
             // Check if '44954670891258' is in the array
