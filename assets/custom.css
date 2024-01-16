@@ -27,3 +27,7 @@
 .product-form__input.Size {
     display: none;
 }
+select#Size {
+    width: 100%;
+    height: 30px;
+}
