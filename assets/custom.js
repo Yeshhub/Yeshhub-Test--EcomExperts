@@ -74,6 +74,13 @@ function add_free_product(cartAction) {
             .catch(function(error) {
                 console.error('Error adding item to cart:', error);
             });
+        }else{
+          if (ids.includes('44954670891258')) {
+              var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] .cart-remove-button');
+              if (cartRemoveButton) {
+                  cartRemoveButton.click();
+              }
+          }
         }
     } else if (cartAction === 'cartremove') {
         // Check if '44954670891258' is in the array
