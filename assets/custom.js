@@ -82,11 +82,14 @@ function add_free_product(cart) {
                 if (cartRemoveButton) {
                     cartRemoveButton.click();
                 }
+              console.log('in3');
             }
         }
     }
     if (cart == 'cartremove'){
+      console.log('in1');
         if (ids.includes('44954670891258')) {
+          console.log('in2');
             var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button');
             if (cartRemoveButton) {
                 cartRemoveButton.click();
@@ -102,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
         setTimeout(function(){
+            console.log('in');
             add_free_product('cartremove');
             console.log('click');
         }, 1500);
