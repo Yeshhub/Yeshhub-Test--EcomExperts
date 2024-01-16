@@ -24,3 +24,6 @@
 .cart-items .cart-item[data-id="44954670891258"] cart-remove-button{
     pointer-events: none;
 }
+.product-form__input.Size {
+    display: none;
+}
