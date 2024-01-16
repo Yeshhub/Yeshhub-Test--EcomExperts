@@ -98,11 +98,11 @@ function add_free_product(cart) {
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.href.indexOf('/cart') > -1) {
         // Run the function on the cart page
-        add_free_product(cartadd);
+        add_free_product('cartadd');
     }
     document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
         setTimeout(function(){
-            add_free_product(cartremove);
+            add_free_product('cartremove');
             console.log('click');
         }, 1500);
     });
