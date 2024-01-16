@@ -103,21 +103,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Run the function on the cart page
         add_free_product('cartadd');
     }
-    document.querySelectorAll('.cart-items .cart-item .cart-remove-button').forEach(function (button) {
-        button.addEventListener('click', function () {
+    document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
+        setTimeout(function(){
             console.log('in');
-    
-            var cartItem = this.closest('.cart-item');
-            var cartItemId = cartItem.dataset.id;
-    
-            // Assuming you want to find an element with the class 'cart-remove-button' inside the cart item
-            var cartRemoveButton = cartItem.querySelector('.cart-remove-button');
-    
-            if (cartRemoveButton) {
-                cartRemoveButton.click();
-            }
-    
+            add_free_product('cartremove');
             console.log('click');
-        });
+        }, 1500);
     });
 });
