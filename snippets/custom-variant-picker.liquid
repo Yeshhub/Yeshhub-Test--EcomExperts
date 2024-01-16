@@ -22,12 +22,7 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
-        {% if product.handle == 'handbag' and option.name == 'Color' %}
-          <fieldset class="js product-form__input {{ option.name }}">
-            <legend class="form__label">{{ option.name }}</legend>
-            {% render 'custom-product-variant-options', product: product, option: option, block: block %}
-          </fieldset>
-        {% else %}
+        {% if product.handle == 'handbag' and option.name == 'Size' %}
           <fieldset class="js product-form__input {{ option.name }}">
             <legend class="form__label">{{ option.name }}</legend>
             {% render 'custom-product-variant-options', product: product, option: option, block: block %}
@@ -39,6 +34,11 @@
               <option value="{{ value | escape }}">{{ value | escape }}</option>
             {% endfor %}
           </select>
+        {% else %}
+          <fieldset class="js product-form__input {{ option.name }}">
+            <legend class="form__label">{{ option.name }}</legend>
+            {% render 'custom-product-variant-options', product: product, option: option, block: block %}
+          </fieldset>
         {% endif %}
       {%- endfor -%}
       <script type="application/json">
