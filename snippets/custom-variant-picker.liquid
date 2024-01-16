@@ -30,7 +30,7 @@
           <legend class="form__label {{ option.name }}">{{ option.name }}</legend>
           <select id="{{ option.name }}" value="{{ option.selected_value }}">
             {% for value in option.values %}
-              {% if forloop.first %}<option value="unselected" disabled>Unselected</option>{% endif %}
+              {% if forloop.first %}<option value="unselected" disabled selected>Unselected</option>{% endif %}
               <option value="{{ value | escape }}">{{ value | escape }}</option>
             {% endfor %}
           </select>
