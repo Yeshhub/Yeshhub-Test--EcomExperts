@@ -106,6 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
     console.log('in');
-    add_free_product('cartremove');
+    var cartRemoveButton = document.querySelector('.cart-items .cart-item[data-id="44954670891258"] cart-remove-button');
+    if (cartRemoveButton) {
+        cartRemoveButton.click();
+    }
     console.log('click');
 });
