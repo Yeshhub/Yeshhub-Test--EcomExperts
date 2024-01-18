@@ -104,11 +104,34 @@ document.addEventListener('DOMContentLoaded', function() {
         // Run the function on the cart page
         add_free_product('cartadd');
     }
-    document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
-        setTimeout(function(){
-            console.log('in');
-            add_free_product('cartremove');
-            console.log('click');
-        }, 1500);
-    });
+    const targetNode = document.querySelector('table.cart-items tbody');
+    
+    // Configuration of the observer
+    const config = { childList: true, subtree: true };
+    
+    // Callback function to execute when mutations are observed
+    const callback = function (mutationsList, observer) {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                // Check if the mutation involves changes to the 'tr' elements with class 'cart-item'
+                const cartItems = document.querySelectorAll('table.cart-items tr.cart-item');
+                
+                // Execute the function when the count changes
+                add_free_product('cartremove');
+            }
+        }
+    };
+    
+    // Create an observer instance with the callback function and configuration
+    const observer = new MutationObserver(callback);
+    
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+    // document.querySelector('.cart-items .cart-item[data-id="44974448410874"] cart-remove-button').addEventListener('click', function() {
+    //     setTimeout(function(){
+    //         console.log('in');
+    //         add_free_product('cartremove');
+    //         console.log('click');
+    //     }, 1500);
+    // });
 });
