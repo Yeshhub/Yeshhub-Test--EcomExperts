@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (mutation.type === 'childList') {
                 // Check if the mutation involves changes to the 'tr' elements with class 'cart-item'
                 const cartItems = document.querySelectorAll('table.cart-items tr.cart-item');
-                
+                console.log('1');
                 // Execute the function when the count changes
                 add_free_product('cartremove');
             }
