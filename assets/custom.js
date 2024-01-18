@@ -1,32 +1,38 @@
 document.addEventListener('DOMContentLoaded', function () {
     applyStylesBasedOnSelection(); // Call the function on page load
 
-    document.getElementById('Size').addEventListener('change', function () {
-        applyStylesBasedOnSelection();
-        
-        // Your existing code for swatchInput and swatchLabel here
-        var selectedValue = this.value;
-        var swatchInput = document.querySelector('.product-form__input.Size input[value="' + selectedValue + '"]');
-        var swatchId = swatchInput ? swatchInput.id : null;
+    var sizeElement = document.getElementById('Size');
+    if (sizeElement) {
+        sizeElement.addEventListener('change', function () {
+            applyStylesBasedOnSelection();
+            
+            // Your existing code for swatchInput and swatchLabel here
+            var selectedValue = this.value;
+            var swatchInput = document.querySelector('.product-form__input.Size input[value="' + selectedValue + '"]');
+            var swatchId = swatchInput ? swatchInput.id : null;
 
-        if (swatchId) {
-            var swatchLabel = document.querySelector('.product-form__input.Size label[for="' + swatchId + '"]');
-            if (swatchLabel) {
-                swatchLabel.click();
+            if (swatchId) {
+                var swatchLabel = document.querySelector('.product-form__input.Size label[for="' + swatchId + '"]');
+                if (swatchLabel) {
+                    swatchLabel.click();
+                }
             }
-        }
-    });
+        });
+    }
 
     function applyStylesBasedOnSelection() {
-        var selectedValue = document.getElementById('Size').value;
-        var productButtons = document.querySelector('.product__info-container .product-form .product-form__buttons');
+        var sizeElement = document.getElementById('Size');
+        if (sizeElement) {
+            var selectedValue = sizeElement.value;
+            var productButtons = document.querySelector('.product__info-container .product-form .product-form__buttons');
 
-        if (selectedValue === 'unselected' && productButtons) {
-            productButtons.style.opacity = '0.4';
-            productButtons.style.pointerEvents = 'none';
-        } else if (productButtons) {
-            productButtons.style.opacity = '';
-            productButtons.style.pointerEvents = '';
+            if (selectedValue === 'unselected' && productButtons) {
+                productButtons.style.opacity = '0.4';
+                productButtons.style.pointerEvents = 'none';
+            } else if (productButtons) {
+                productButtons.style.opacity = '';
+                productButtons.style.pointerEvents = '';
+            }
         }
     }
 });
